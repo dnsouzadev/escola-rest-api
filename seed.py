@@ -14,7 +14,7 @@ def criando_alunos(quantidade_de_pessoas):
     for _ in range(quantidade_de_pessoas):
         cpf = CPF()
         nome = fake.name()
-        rg = "{}{}{}{}".format(random.randrange(10, 99),random.randrange(100, 999),random.randrange(100, 999),random.randrange(0, 9) ) 
+        rg = "{}{}{}{}".format(random.randrange(10, 99),random.randrange(100, 999),random.randrange(100, 999),random.randrange(0, 9) )
         cpf = cpf.generate()
         data_nascimento = fake.date_between(start_date='-18y', end_date='today')
         a = Aluno(nome=nome,rg=rg, cpf=cpf,data_nascimento=data_nascimento)
@@ -26,11 +26,12 @@ def criando_cursos(quantidade_de_cursos):
     for _ in range(quantidade_de_cursos):
         codigo_curso = "{}{}-{}".format(random.choice("ABCDEF"), random.randrange(10, 99),random.randrange(1, 9))
         descs = ['Python Fundamentos', 'Python intermediário','Python Avançado', 'Python para Data Science', 'Python/React']
-        descricao = random.choice(descs)
-        descs.remove(descricao)
-        nivel = random.choice("BIA")
-        c = Curso(codigo_curso=codigo_curso,descricao=descricao, nivel=nivel)
-        c.save()
+        for dec in descs:
+            descricao = dec
+            descs.remove(dec)
+            nivel = random.choice("BIA")
+            c = Curso(codigo_curso=codigo_curso,descricao=descricao, nivel=nivel)
+            c.save()
 
 
 criando_alunos(200)
