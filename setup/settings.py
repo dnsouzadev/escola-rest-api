@@ -1,5 +1,5 @@
 import os
-from re import M
+from .default import DEFAULT_HEADERS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -131,6 +131,13 @@ REST_FRAMEWORK = {
 
 }
 
+ALLOWED_HOSTS = [
+    "*"
+]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = DEFAULT_HEADERS
+CORS_ALLOW_CREDENTIALS = True
