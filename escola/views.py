@@ -19,13 +19,14 @@ class AlunosViewSet(viewsets.ModelViewSet):
         return AlunoSerializer
 
     def create(self, request):
-        serializer = self.serializer_class(data=request.data)
+        serializer = self.get_serializer_class()(data=request.data)
         if serializer.is_valid():
             serializer.save()
             response = Response(serializer.data, status=status.HTTP_201_CREATED)
             id = str(serializer.data['id'])
             response['Location'] = request.build_absolute_uri() + id
             return response
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CursosViewSet(viewsets.ModelViewSet):
     """Exibindo todos os cursos"""
