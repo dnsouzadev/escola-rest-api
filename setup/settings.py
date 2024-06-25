@@ -130,8 +130,16 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/day',
-    }
-
+    },
+    # PODER SER JSON OU XML
+    # 'DEFAULT_PARSER_CLASSES': [
+    #     'rest_framework.parsers.JSONParser',
+    #     'rest_framework_xml.parsers.XMLParser',
+    # ],
+    # 'DEFAULT_RENDERER_CLASSES': [
+    #     'rest_framework.renderers.JSONRenderer',
+    #     'rest_framework_xml.renderers.XMLRenderer',
+    # ],
 }
 
 ALLOWED_HOSTS = [
@@ -161,3 +169,4 @@ CORS_ALLOW_CREDENTIALS = True
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
+
